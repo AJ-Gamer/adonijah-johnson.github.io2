@@ -20,16 +20,22 @@
  */
 
 function reverseString(input) {
-    // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
-    // YOUR CODE GOES ABOVE HERE //
+  // Create a variable to store the reversed string
+  var reversedString = '';
+
+  // Iterate through the input string in reverse order
+  for (let i = input.length - 1; i >= 0; i--) {
+    // Add each character to the reversed string
+    reversedString += input[i];
+  }
+
+  return reversedString;
 }
 
-
-
+// Now you can call the function to test it
+var originalString = '.gnol oot yleritne koot sihT';
+let reversed = reverseString(originalString);
+console.log(reversed); // Output: 'This took entirely too long.'
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if (

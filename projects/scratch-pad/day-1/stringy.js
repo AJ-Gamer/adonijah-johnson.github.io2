@@ -14,8 +14,8 @@
  */
 function length(string) {
     // YOUR CODE BELOW HERE //
-    
-
+    //Use the .length method to find out the length of the string and return it
+    return string.length
 
     // YOUR CODE ABOVE HERE //
 }
@@ -25,8 +25,8 @@ function length(string) {
  */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
-
-
+    // Use the .toLowerCase method to convert the input string to lowercase.
+    return string.toLowerCase()
 
     // YOUR CODE ABOVE HERE //
 }
@@ -36,11 +36,12 @@ function toLowerCase(string) {
  */
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
-
-
+    // Call the .UpperCase method to change the input value to uppercase.
+    return string.toUpperCase()
 
     // YOUR CODE ABOVE HERE //
 }
+console.log(toUpperCase('you cant see this!'))
 
 /**
  * Given an input String, return a new String forced to dash-case.
@@ -57,11 +58,13 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-
-
+    // Replace spaces with dashes and convert to lowercase
+    return string.replaceAll(' ', '-').toLowerCase();
 
     // YOUR CODE ABOVE HERE //
 }
+var dashInputString = 'Sonic The Hedgehog'
+console.log(toDashCase(dashInputString))
 
 /**
  * Given an input String and a single character, return true if the String
@@ -77,11 +80,15 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-    
-
+    // Convert the first character of the string to lowercase to ensure that it is the correct letter.
+    var firstChar = string.charAt(0).toLowerCase();
+    char = char.toLowerCase(); // To make sure that the input character is lowercase
+    return firstChar === char;
+    }
+    //Calling the function    
+    console.log(beginsWith('Queso', "Q"))
     // YOUR CODE ABOVE HERE //
-}
+
 
 /**
  * Given an input String and a single character, return true if the String
@@ -97,7 +104,10 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+    // Convert the last character of the string to lowercase to ensure that it is the correct letter.
+    var lastChar = string.charAt(string.length - 1).toLowerCase();
+    char = char.toLowerCase(); // To make sure that the input character is lowercase
+    return lastChar === char;
 
 
     // YOUR CODE ABOVE HERE //
@@ -110,8 +120,8 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+    // Concatenate two strings together with the + operator
+return stringOne + stringTwo
 
     // YOUR CODE ABOVE HERE //
 }
@@ -129,8 +139,8 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
-
+    // Use the join method to concatenate all the strings in the args array
+    return args.join('');
     // YOUR CODE ABOVE HERE //
 }
 
@@ -145,8 +155,12 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+    // Compare the lengths of the two strings
+    if (stringOne.length > stringTwo.length) {
+        return stringOne;
+    } else {
+     return stringTwo;
+  }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -158,14 +172,14 @@ function longest(stringOne, stringTwo) {
  *
  * TIP: How can we compare Strings? Is 'a' greater than or less than 'b'?
  */
-function sortAscending(stringOne, stringTwo) {
+function sortAscending(stringTwo, stringOne) {
     // YOUR CODE BELOW HERE //
-
-
-
+    // Use the localeCompare method to compare the strings
+  return stringOne.localeCompare(stringTwo);
+  
+  
     // YOUR CODE ABOVE HERE //
-}
-
+  }
 
 /**
  * Given two Strings, return 1 if the first is lower in alphabetical order than
@@ -176,13 +190,11 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
+    // Use the localeCompare method to compare the strings
+    return stringOne.localeCompare(stringTwo);
 
     // YOUR CODE ABOVE HERE //
 }
-
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&

@@ -13,10 +13,9 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    // Return a function that tests if a given value is greater than the base
+    return function(value) {return value > base;
+  };
     // YOUR CODE ABOVE HERE //
 }
 
@@ -27,9 +26,9 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
+    // Return a function that tests if a given value is less than the base
+  return function(value) {return value < base;
+  };
     
     // YOUR CODE ABOVE HERE //
 }
@@ -41,12 +40,17 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    //Convert startsWith to lowercase to make it case-insensitive
+    startsWith = startsWith.toLowerCase();
+    //Return a function that tests if a given string starts with startsWith character
+    return function(inputString) {
+    //Convert inputString to lowercase for case-insensitive comparison
+    inputString = inputString.toLowerCase()
+    //Check if the inputString starts with the startsWith chatacter
+    return inputString.startsWith(startsWith)
+   };
     // YOUR CODE ABOVE HERE //
-}
+} //Tested this code in replit and it seems to work fine.
 
 /** 
  * Given a endsWith character, which will be a single character, return a 
@@ -55,10 +59,17 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    // Return a function that tests if a given string ends with the endsWith character
+   //Convert endsWith to lowercase to make it case-insensitive
+   endsWith = endsWith.toLowerCase();
+    // Return a function that tests if a given string ends with endsWith character
+    return function(inputString) {
+    // Convert inputString to lowercase for case-insensitive comparison
+    inputString = inputString.toLowerCase();
+    // Check if the inputString ends with the endsWith character
+    return inputString.endsWith(endsWith);
+    };
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -71,10 +82,15 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+ // Create an array to collect the modified strings
+ var modifiedStrings = [];
+ // Loop over the input strings
+ for (let i = 0; i < strings.length; i++) {
+   // Apply the modify function to the current string and add the result to the modified array
+   modifiedStrings.push(modify(strings[i]));
+ }
+ // Return the array of modified strings
+ return modifiedStrings;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -89,9 +105,12 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
+    // Loop over the input strings
+  for (let i = 0; i < strings.length; i++) {
+    // Apply the test function to the current string, if any string fails the test, return false
+    if (!test(strings[i])) {return false;
+    }
+  } return true; // If all strings pass the test, return true
     
     // YOUR CODE ABOVE HERE //
 }
