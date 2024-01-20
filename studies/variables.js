@@ -29,7 +29,7 @@
 //1. Declaration
 // In this phase, the variables are declared but undefined, they exist but have no value
 var example;
-let exampleOne;       // This a syntax error, as let cannot be used in the global scope, which will be mentioned later.
+let exampleOne;
 console.log(example) //this function logs data to the console, and this example will log undefined
 console.log(exampleOne) //undefined
 
@@ -74,3 +74,5 @@ message = "hello user"
 let greeting = "say Hi";
 let greeting = "say Hello instead"; // error: Identifier 'greeting' has already been declared
 //let and const would have the same result in this instance.
+
+//6. Scope
