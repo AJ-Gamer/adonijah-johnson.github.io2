@@ -22,26 +22,93 @@ var _ = require("underbar");
  */
 
 var maleCount = function(array) {
-
+    return array.filter(function(customer) {
+        return customer.gender === "male";
+    }).length;
 };
 
-var femaleCount;
+var femaleCount = function(array) {
+    return array.reduce(function(acc, customer) {
+      return customer.gender === "female" ? acc + 1 : acc;
+    }, 0);
+};  
 
-var oldestCustomer;
+var oldestCustomer = function(array) {
+  var oldest = array.reduce(function(prev, current) {
+    var prevBirthdate = new Date(current.age, prev.age);
+    return prevBirthdate > new Date(current.age, current.age) ? prev : current;
+  });
+  return oldest.name;
+};
 
-var youngestCustomer;
+var youngestCustomer = function(array) {
+  var youngest = array.reduce(function(prev, current) {
+    var prevBirthdate = new Date(prev.age, prev.age);
+    return prevBirthdate < new Date(current.age, current.age) ? prev : current;
+  });
+  return youngest.name;
+};
 
-var averageBalance;
+var averageBalance = function(array) {
+    var totalBalance = array.reduce(function(acc, customer) {
+      return acc + parseFloat(customer.balance.replace('$', '').replace(',', ''));
+    }, 0);
+    return totalBalance / array.length;
+};
+  
+var firstLetterCount = function(array, letter) {
+    return array.filter(function(customer) {
+      return customer.name.charAt(0).toLowerCase() === letter.toLowerCase();
+    }).length;
+};
+  
+var friendFirstLetterCount = function(array, customer, letter) {
+    var targetCustomer = array.find(function(cust) {
+      return cust.name === customer;
+    });
+    if (targetCustomer) {
+      return targetCustomer.friends.filter(function(friend) {
+        return friend.name.charAt(0).toLowerCase() === letter.toLowerCase();
+      }).length;
+    }
+    return 0;
+};
 
-var firstLetterCount;
+var friendsCount = function(array, name) {
+    var targetCustomer = array.find(function(customer) {
+      return customer.name === name;
+    });
+    if (targetCustomer) {
+      return array.filter(function(customer) {
+        return customer.friends.some(function(friend) {
+          return friend.name === name;
+        });
+      }).map(function(customer) {
+        return customer.name;
+      });
+    }
+    return [];
+};
 
-var friendFirstLetterCount;
+var topThreeTags = function(array) {
+    var tagCounts = array.reduce(function(acc, customer) {
+      customer.tags.forEach(function(tag) {
+        acc[tag] = (acc[tag] || 0) + 1;
+      });
+      return acc;
+    }, {});
+    var sortedTags = Object.keys(tagCounts).sort(function(a, b) {
+      return tagCounts[b] - tagCounts[a];
+    });
+    return sortedTags.slice(0, 3);
+};
 
-var friendsCount;
-
-var topThreeTags;
-
-var genderCount;
+var genderCount = function(array) {
+    return array.reduce(function(acc, customer) {
+      acc[customer.gender] = (acc[customer.gender] || 0) + 1;
+      return acc;
+    }, {});
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
