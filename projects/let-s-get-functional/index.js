@@ -50,10 +50,12 @@ var youngestCustomer = function(array) {
 };
 
 var averageBalance = function(array) {
-    var totalBalance = array.reduce(function(acc, customer) {
-      return acc + parseFloat(customer.balance.replace('$', '').replace(',', ''));
-    }, 0);
-    return totalBalance / array.length;
+  var totalBalance = array.reduce(function(acc, customer) {
+    // Use Number() to convert the balance string to a number
+    var balanceValue = Number(customer.balance.replace('$', '').replace(',', ''));
+    return acc + balanceValue;
+  }, 0);
+  return totalBalance / array.length;
 };
   
 var firstLetterCount = function(array, letter) {
