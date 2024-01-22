@@ -1111,11 +1111,11 @@
       });
 
       it('should use recursion by calling self', function () {
-        var originalMinZeroes = minimizeZeroes;
-        minimizeZeroes = sinon.spy(minimizeZeroes);
-        minimizeZeroes(input1);
-        expect(minimizeZeroes.callCount).to.be.above(1);
-        minimizeZeroes = originalMinZeroes;
+      var originalMinZeroes = minimizeZeroes;
+          minimizeZeroes = sinon.spy(minimizeZeroes);
+          minimizeZeroes(input1);
+          expect(minimizeZeroes.callCount).to.be.above(1);
+          minimizeZeroes = originalMinZeroes;
       });
 
     });

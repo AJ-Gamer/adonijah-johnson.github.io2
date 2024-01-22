@@ -5,6 +5,9 @@
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
 var factorial = function(n) {
+  if (n < 0){
+    return null
+  }
   if (n === 0 || n === 1) {
     return 1;
   } else {
@@ -38,33 +41,46 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  // Ensure n is a non-negative integer
+  n = Math.abs(Math.round(n));
+
   // Base case: if n is 0, it's even; if n is 1, it's odd
   if (n === 0) {
     return true;
   } else if (n === 1) {
     return false;
+  } else {
+    // Recursive case: subtract 2 from n until reaching the base case
+    return isEven(n - 2);
   }
-  // Recursive case: subtract 2 from n until reaching the base case
-  return isEven(n - 2);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function(n) {
+var sumBelow = function(n, currentSum = 0) {
+  // Base case: if n is equal to 0, return the current sum
   if (n === 0) {
-    return 0; // Base case: sum below 0 is 0
+    return currentSum;
   }
-  return (n - 1) + sumBelow(n - 1); // Recursive case: add (n-1) to sum of integers below (n-1)
+
+  // Add n-1 (or n+1 for negative n) to the current sum
+  return sumBelow(n - (n > 0 ? 1 : -1), currentSum + (n > 0 ? n - 1 : n + 1));
 };
+
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
-  if (x >= y - 1) {
-    return []; // Base case: range is empty when x is greater than or equal to y-1
+  if (x >= y) {
+    return [];
+  } else if (x + 1 === y) {
+    return [];
+  } else {
+    var result = range(x + 1, y);
+    result.unshift(x + 1);
+    return result;
   }
-  return [x + 1].concat(range(x + 1, y)); // Recursive case: concatenate [x+1] with range of (x+1, y)
 };
 
 // 7. Compute the exponent of a number.
@@ -76,7 +92,13 @@ var exponent = function(base, exp) {
   if (exp === 0) {
     return 1; // Base case: any number to the power of 0 is 1
   }
-  return base * exponent(base, exp - 1); // Recursive case: multiply base by exponent(base, exp-1)
+  
+  if (exp > 0) {
+    return base * exponent(base, exp - 1); // Recursive case: multiply base by exponent(base, exp-1)
+  } else {
+    // If exp is negative, calculate the reciprocal of the positive exponent
+    return 1 / exponent(base, -exp);
+  }
 };
 
 // 8. Determine if a number is a power of two.
@@ -103,9 +125,15 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  // Helper function to remove spaces and convert to lowercase
+  const cleanString = str => str.replace(/\s/g, '').toLowerCase();
+
+  string = cleanString(string);
+
   if (string.length <= 1) {
     return true; // Base case: strings with 0 or 1 characters are palindromes
   }
+
   return string[0] === string[string.length - 1] && palindrome(string.slice(1, -1));
   // Recursive case: first and last characters are the same, and the substring in between is a palindrome
 };
@@ -127,9 +155,14 @@ var modulo = function(x, y) {
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
   if (y === 0) {
-    return 0; // Base case: product is 0 when y is 0
+    return 0;
   }
-  return x + multiply(x, y - 1); // Recursive case: add x to product of x and y-1
+
+  if (y > 0) {
+    return x + multiply(x, y - 1);
+  } else {
+    return -multiply(x, -y);
+  }
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
