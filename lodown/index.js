@@ -170,7 +170,7 @@ module.exports.unique = unique
  * @param {array} array: stores multiple values and elements in one variable
  * @param {Function} action: The Function to be applied to each value in the collection.
  * 
- * @return {array}: Returns a new array with one of each of the given values.
+ * @return {array}: Returns a new array with values that returned true when passed to the callback function.
  */
 function filter(array, func){
   var filteredArray = [];
@@ -191,7 +191,7 @@ module.exports.filter = filter
  * @param {array} array: stores multiple values and elements in one variable
  * @param {Function} action: The Function to be applied to each value in the collection.
  * 
- * @return {array}: Returns a shallow copy of the given array containing just the elements that pass the test.
+ * @return {array}: Returns a shallow copy of the given array containing just the elements that don't pass the test.
  */
 function reject(array, func){
   var rejectedArray = [];
@@ -358,8 +358,7 @@ module.exports.some = some
  * 
  * @param {Array} array: stores multiple values and elements in one variable
  * @param {Function} action: The Function to be applied to each value in the collection.
- * @param {Seed} seed: A starting point for a hidden sequence of numbers that are uniformly distributed throughout
- * their possible range.
+ * @param {Seed} seed: Gives the functions return value an initial value.
  * 
  * @return {value}: Returns the function's accumulated result.
  */
@@ -384,15 +383,18 @@ let output;
 module.exports.reduce = reduce
 
 /**
- * extend: Designed to create a class that is a child of another class.
+ * extend: Designed to create a class by inheriting properties and methods from existing classes..
  * 
- * @param {Object} Object: A collection of properties, and a property is an association between a name (or key) and a value.
- * @Param (Spread Syntax) ...: Allows an iterable, such as an array or string, to be expanded in places where zero or more arguments
+ * @param {Object} targetObject - The class to be extended.
+ * (Object): A collection of properties, and a property is an association between a name (or key) and a value.
+ * @param {...Object} sourceObjects - Objects to copy key/value pairs from.
+ * (Spread Syntax(...)): Allows an iterable, such as an array or string, to be expanded in places where zero or more arguments
  * or elements are expected. In an object literal, the spread syntax enumerates the properties
  * of an object and adds the key-value pairs to the object being created.
  * 
- * @Return {subclass}: Creates a new class that is a modified version of an existing class, inheriting its properties and methods.
+ * @return {subclass} - Modified version of the target class with copied properties.
  */
+
 function extend(object1, ...restOfObjects){
   for (let i = 0; i < restOfObjects.length; i++) {
     const obj2 = restOfObjects[i];
