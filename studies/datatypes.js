@@ -1,50 +1,68 @@
-/**
- * 0. Data types are different kinds of date used and stored within code for different purposes depending on the type of data being used.
- * These data types consist of numbers, strings, booleans, arrays, objects, functions, undefined, null, NaN, infinity and -infinity.
+ /**
+  * DATA TYPES
+  * 
+ * 0. Data types are different kinds of data used and stored within code for different purposes depending on the type of data being used.
+ * These data types consist of numbers, strings, booleans, arrays, objects, functions, undefined, null, NaN, Infinity, and -Infinity.
  * 1. Number data is any data that is strictly a number. ex: 369
- * 2. String data is any data contained within quotation marks are strings. ex: "string", 'string'
- * 3. Boolean data is strictly date that is true or false. ex: true, false
- * 4. Arrays are sets of data contained with sqaure brackets and can be any type of data. ex: var array = ['string', 23, true]
- * 5. Objects are  a collection of properties, and a property is an association between a name (or key) and a value. ex: var object = {name: "AJ", age: 18}
- * 6. Functions are a set of statements that performs a task or calculates a value after taking in an input and gives the calculated output.
+ * 2. String data is any data contained within quotation marks; strings. ex: "string", 'string'
+ * 3. Boolean data is strictly data that is true or false. ex: true, false
+ * 4. Arrays are sets of data contained within square brackets and can be any type of data. ex: var array = ['string', 23, true]
+ * 5. Objects are a collection of properties, and a property is an association between a name (or key) and a value. ex: var object = {name: "AJ", age: 18}
+ * 6. Functions are a set of statements that perform a task or calculate a value after taking in an input and give the calculated output.
  * 7. Undefined is an output given for variables and functions that are not defined with a proper or correct value.
  * 8. Null represents the intentional absence of any object value.
- * 9. NaN is an output given for values that are not numbers but are attemping to be used as number values.
+ * 9. NaN is an output given for values that are not numbers but are attempting to be used as number values.
  * 10. Infinity is a property of the global object that is greater than any other number.
- * 11. -infinity is also a property of the global object and is less than any other number
+ * 11. -Infinity is also a property of the global object and is less than any other number.
+ * 12. Primitive values are passed to a function by copy, complex values are passed by reference. 
+ *     This means that when a primitive value is passed to a function, a copy of that value is created, and any changes
+ *     made to the parameter inside the function do not affect the original value outside the function. 
+ *     On the other hand, complex values, like arrays and objects, are passed by reference, so changes made to the parameter
+ *     inside the function directly affect the original value outside the function.
  */
 
-//1.Array
-//This will show an example of an array with multiple data types
-var arr = [1, 2, 3, 500, 700, "strings", "superheros", 'data', true, false, NaN, null, undefined, ];
+//1. Number
+// Example of declaring and initializing a variable with a number
+var numVar = 369;
 
-//2. Object
-//this will show an object example
-var obj = {number: 60,
-           string: "strings",
-          boolean: true};
+//2. String
+// Example of declaring and initializing a variable with a string
+let strVar = "string";
 
-//3. Function
-//There are plenty of examples for functions but a basic function example would be to give a function an input, that performs a task for a calculated output
-function fullName(firstName, lastName) {return firstName + lastName};
+//3. Boolean
+// Example of declaring and initializing a variable with a boolean
+const boolVar = true;
+
+//4. Array
+// Example of declaring and initializing a variable with an array
+var arrVar = [1, 2, 3, 500, 700, "strings", "superheros", 'data', true, false, NaN, null, undefined];
+
+//5. Object
+// Example of declaring and initializing a variable with an object
+let objVar = { number: 60, string: "strings", boolean: true };
+
+//6. Function
+// Example of declaring and initializing a variable with a function
+const fullName = function (firstName, lastName) {
+  return firstName + lastName;
+};
 console.log(fullName("Adonijah", "Johnson"));
 
-//4. Undefined
-//This variable has no value and thus it is undefined
-var defined
-console.log(defined) //undefined
+//7. Undefined
+// Example of declaring a variable without initializing it (undefined by default)
+var undefinedVar;
+console.log(undefinedVar); // Logs undefined
 
-//5. null
-//Null simply means that there is no value for an given variable or function
-var ex = null
-if (ex === 0) {console.log("I don't have value.")}; //logs "I don't have value", because 0 in itself is an abcense of value.
+//8. Null
+// Example of declaring and initializing a variable with null
+let nullVar = null;
 
-//6. NaN
-//NaN processes value to determine if it is a number or not
-var sum = 1 + "2";
-console.log(sum) //NaN
+//9. NaN
+// Example of NaN resulting from an invalid numerical operation
+var nanVar = 1 + "2";
+console.log(nanVar); // Logs NaN
 
-//7. Infinity and -Infinity
-//These values are the highest and lowest numerical values
-var greatest = 90000000 < Infinity
-var least = -9000000000 > -Infinity
+//10. Infinity and -Infinity
+// Examples of declaring and comparing with Infinity and -Infinity
+var greatest = 90000000 < Infinity;
+var least = -9000000000 > -Infinity;
