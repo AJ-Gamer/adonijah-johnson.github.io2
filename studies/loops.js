@@ -17,6 +17,14 @@
  * 
  * - For Loop: Repeats a block of code for a specified number of times. Ideal when you know the exact number of iterations
  *   needed and want a more concise syntax.
+ *   Syntax:
+ *   for (start; stop; update) {
+ *   code to be executed in each iteration
+ *   }
+ * 
+ * - start: Initial expression executed once at the beginning of the loop. It is typically used to initialize a counter variable.
+ * - stop: Conditional expression evaluated before each iteration. If it evaluates to false, the loop is terminated.
+ * - update: Expression executed at the end of each iteration. It is usually used to update the counter variable.
  *   Example:
  *   for (var i = 0; i < 5; i++) {
  *     console.log(i);

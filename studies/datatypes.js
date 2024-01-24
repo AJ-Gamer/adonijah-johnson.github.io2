@@ -66,3 +66,29 @@ console.log(nanVar); // Logs NaN
 // Examples of declaring and comparing with Infinity and -Infinity
 var greatest = 90000000 < Infinity;
 var least = -9000000000 > -Infinity;
+
+//11. Copy by Value (Primitive Types)
+// Example with numbers
+let originalNum = 42;
+let copiedNum = originalNum; // Copy by value
+copiedNum = 100;
+console.log(originalNum); // 42 (unchanged)
+
+// Example with strings
+let originalStr = "Hello";
+let copiedStr = originalStr; // Copy by value
+copiedStr = "World";
+console.log(originalStr); // Hello (unchanged)
+
+//12. Copy by Reference (Complex Types)
+// Example with arrays
+let originalArray = [1, 2, 3];
+let copiedArray = originalArray; // Copy by reference
+copiedArray.push(4);
+console.log(originalArray); // Output: [1, 2, 3, 4] (changed)
+
+// Example with objects
+let originalObject = { key: "value" };
+let copiedObject = originalObject; // Copy by reference
+copiedObject.newKey = "newValue";
+console.log(originalObject); // Output: { key: "value", newKey: "newValue" } (changed)
